@@ -283,7 +283,7 @@ ul { list-style: none; padding: 0; }
 .hero { position: relative; }
 /* Tall scroll track that drives the 3D device sequence (only when motion is OK) */
 @media (prefers-reduced-motion: no-preference) {
-  .hero { height: 320vh; }
+  .hero { height: 360vh; }
 }
 .hero__pin {
   position: sticky;
@@ -356,6 +356,90 @@ ul { list-style: none; padding: 0; }
   transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
 }
 .hero__caption span.is-on { opacity: 1; transform: none; }
+
+/* ---- Scroll stages (text + layout change per scroll step) ---- */
+.hero__stages { display: grid; }
+.hero__stage {
+  grid-area: 1 / 1;            /* all stages stacked in one cell, crossfaded */
+  align-self: start;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+.hero__stage[data-s="0"] { opacity: 1; }   /* default before JS / reduced-motion */
+.hero__stage.is-on { pointer-events: auto; }
+
+.hero__title--sm {
+  font-size: clamp(1.9rem, 4.4vw, 3.4rem);
+  line-height: 1.04;
+  max-width: 17ch;
+}
+
+/* Stage 2 — values grid */
+.hero__values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.2rem 1.6rem;
+  margin-top: 1.8rem;
+  max-width: 600px;
+}
+.hero__values li {
+  display: flex;
+  gap: 0.7rem;
+  align-items: baseline;
+  color: var(--text);
+  font-size: 0.97rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--line);
+}
+.hero__values-n { font-family: var(--font-mono); color: var(--gold); font-size: 0.78rem; }
+
+/* Stage 3 — big stats */
+.hero__bigstats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.5rem, 4vw, 3.2rem);
+  margin: 1.8rem 0 0;
+}
+.hero__bigstats dt {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 4.6vw, 3.4rem);
+  line-height: 1;
+  color: var(--gold);
+}
+.hero__bigstats dt span { color: var(--text); }
+.hero__bigstats dd { margin-top: 0.45rem; color: var(--muted); font-size: 0.88rem; max-width: 15ch; }
+
+.hero__note {
+  margin-top: 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: #5b5b60;
+}
+
+/* Stage progress indicator */
+.hero__progress {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  margin-top: 2.4rem;
+}
+.hero__progress li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.45;
+  transition: opacity 0.4s var(--ease), color 0.4s var(--ease);
+}
+.hero__progress li span { color: var(--gold); }
+.hero__progress li.is-on { opacity: 1; color: var(--text); }
 
 .hero__grid {
   position: absolute; inset: 0;
@@ -992,6 +1076,12 @@ ul { list-style: none; padding: 0; }
   .hero__inner { padding-bottom: 2.5rem; }
   .hero__caption { min-height: 2.6em; }
   .hero__caption span { white-space: normal; }
+  .hero__values { grid-template-columns: 1fr; gap: 0; max-width: none; }
+  .hero__values li { padding: 0.7rem 0; }
+  .hero__bigstats { gap: 1.2rem 1.8rem; }
+  .hero__bigstats dd { max-width: none; }
+  .hero__progress { gap: 1rem; margin-top: 1.6rem; }
+  .hero__progress li { font-size: 0.64rem; }
   .hero__scrim {
     z-index: 2;
     background: linear-gradient(180deg, transparent 24%, rgba(10,10,10,0.55) 56%, var(--bg) 88%);

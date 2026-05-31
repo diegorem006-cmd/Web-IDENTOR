@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 940" width="560" height="940">
+  <defs>
+    <linearGradient id="chrome3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef2f5"/><stop offset="0.3" stop-color="#9aa3ad"/>
+      <stop offset="0.6" stop-color="#5c636c"/><stop offset="1" stop-color="#3a4049"/>
+    </linearGradient>
+    <linearGradient id="side3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2b3138"/><stop offset="1" stop-color="#0c1015"/>
+    </linearGradient>
+    <linearGradient id="screen3" x1="0" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#0a1c2e"/><stop offset="1" stop-color="#05101b"/>
+    </linearGradient>
+    <radialGradient id="amb3" cx="48%" cy="40%" r="60%">
+      <stop offset="0" stop-color="#4aa8ff" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#4aa8ff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ring3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#C9A84C"/><stop offset="1" stop-color="#4aa8ff"/>
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="270" cy="470" rx="250" ry="430" fill="url(#amb3)"/>
+
+  <g transform="translate(260,470) skewY(-6) scale(0.86,1) translate(-260,-470)">
+
+    <!-- right side panel (depth) -->
+    <polygon points="392,92 420,110 420,852 392,872" fill="url(#side3)"/>
+
+    <!-- chrome frame -->
+    <rect x="126" y="58" width="268" height="824" rx="44" fill="url(#chrome3)"/>
+    <!-- screen ON -->
+    <rect x="138" y="70" width="244" height="800" rx="38" fill="url(#screen3)"/>
+    <rect x="156" y="150" width="208" height="600" rx="16" fill="#06101b"/>
+
+    <!-- face scan ring -->
+    <circle cx="260" cy="352" r="74" fill="none" stroke="url(#ring3)" stroke-width="3" stroke-dasharray="6 10" opacity="0.9"/>
+    <g stroke="#C9A84C" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.85">
+      <path d="M198 300 v-14 h14"/><path d="M322 300 v-14 h-14"/>
+      <path d="M198 404 v14 h14"/><path d="M322 404 v14 h-14"/>
+    </g>
+    <!-- fingerprint glyph -->
+    <g fill="none" stroke="#9fccff" stroke-width="2.2" stroke-linecap="round" opacity="0.9">
+      <path d="M236 360 a26 30 0 0 1 48 0"/>
+      <path d="M244 360 a18 22 0 0 1 32 0"/>
+      <path d="M252 360 a10 14 0 0 1 16 0"/>
+      <path d="M260 346 v22"/>
+    </g>
+
+    <!-- time + date -->
+    <text x="260" y="556" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-weight="600" font-size="46" fill="#eaf3ff">12:30</text>
+    <text x="260" y="588" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="15" fill="#6f8aa6" letter-spacing="2">2026/05/31</text>
+
+    <!-- status line -->
+    <g opacity="0.85">
+      <circle cx="214" cy="650" r="4" fill="#4ee07a"/>
+      <text x="226" y="655" font-family="'IBM Plex Mono', monospace" font-size="13" fill="#86a3c0">ACCESO LISTO</text>
+    </g>
+
+    <!-- top cameras -->
+    <circle cx="240" cy="120" r="14" fill="#0a0d12" stroke="#3a424c" stroke-width="2"/>
+    <circle cx="240" cy="118" r="2" fill="#5db4ff" opacity="0.8"/>
+    <circle cx="288" cy="120" r="14" fill="#0a0d12" stroke="#3a424c" stroke-width="2"/>
+
+    <!-- home button -->
+    <circle cx="260" cy="812" r="22" fill="#08263a" stroke="url(#chrome3)" stroke-width="3"/>
+    <circle cx="260" cy="812" r="11" fill="none" stroke="#4aa8ff" stroke-width="1.6" opacity="0.8"/>
+  </g>
+</svg>

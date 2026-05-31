@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 940" width="620" height="940">
+  <defs>
+    <linearGradient id="chrome2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef2f5"/><stop offset="0.3" stop-color="#9aa3ad"/>
+      <stop offset="0.6" stop-color="#5c636c"/><stop offset="1" stop-color="#3a4049"/>
+    </linearGradient>
+    <linearGradient id="glass2" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#13181f"/><stop offset="1" stop-color="#05070a"/>
+    </linearGradient>
+    <linearGradient id="pcb" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c1620"/><stop offset="1" stop-color="#060d12"/>
+    </linearGradient>
+    <radialGradient id="amb2" cx="50%" cy="42%" r="60%">
+      <stop offset="0" stop-color="#38c6ff" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#38c6ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="cyglow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <ellipse cx="310" cy="470" rx="290" ry="430" fill="url(#amb2)"/>
+
+  <g transform="translate(310,470) skewY(-3) scale(0.95,1) translate(-310,-470)">
+
+    <!-- BACK frame -->
+    <g transform="translate(52,-14)" opacity="0.96">
+      <rect x="176" y="58" width="268" height="824" rx="44" fill="url(#chrome2)"/>
+      <rect x="188" y="70" width="244" height="800" rx="36" fill="#0a0f15"/>
+      <rect x="206" y="150" width="208" height="150" rx="10" fill="#0d141c"/>
+      <rect x="206" y="320" width="208" height="240" rx="10" fill="#0d141c"/>
+      <rect x="206" y="580" width="208" height="150" rx="10" fill="#0d141c"/>
+    </g>
+
+    <!-- CIRCUIT board -->
+    <g transform="translate(0,0)">
+      <rect x="184" y="78" width="252" height="784" rx="38" fill="url(#pcb)" stroke="#16323b" stroke-width="1"/>
+      <!-- traces -->
+      <g fill="none" stroke="#38c6ff" stroke-width="2" filter="url(#cyglow)" opacity="0.9">
+        <path d="M210 240 H300 V180 H360"/>
+        <path d="M210 300 H260 V360 H330 V300 H400"/>
+        <path d="M210 470 H410"/>
+        <path d="M250 470 V560 H360"/>
+        <path d="M210 640 H300 V700 H390"/>
+        <path d="M310 700 V760"/>
+      </g>
+      <g fill="none" stroke="#C9A84C" stroke-width="1.6" opacity="0.8">
+        <path d="M215 200 H280 V150"/>
+        <path d="M215 540 H300 V600 H380"/>
+        <path d="M360 240 V300 H410"/>
+      </g>
+      <!-- vias -->
+      <g fill="#38c6ff">
+        <circle cx="300" cy="180" r="3"/><circle cx="360" cy="180" r="3"/>
+        <circle cx="400" cy="300" r="3"/><circle cx="360" cy="560" r="3"/>
+        <circle cx="390" cy="700" r="3"/><circle cx="310" cy="760" r="3"/>
+      </g>
+      <!-- CPU -->
+      <rect x="262" y="392" width="96" height="96" rx="6" fill="#0a141b" stroke="#2c5566" stroke-width="1.5"/>
+      <g stroke="#1d3a45" stroke-width="2"><path d="M278 408 H342 M278 424 H342 M278 440 H342 M278 456 H342 M278 472 H342"/></g>
+      <rect x="296" y="426" width="28" height="28" rx="3" fill="#12222b" stroke="#C9A84C" stroke-opacity="0.5"/>
+      <!-- camera module -->
+      <rect x="236" y="150" width="148" height="64" rx="8" fill="#0a141b" stroke="#244b59"/>
+      <circle cx="276" cy="182" r="14" fill="#06262f" stroke="#38c6ff" stroke-opacity="0.5"/>
+      <circle cx="328" cy="182" r="14" fill="#06121a" stroke="#2c5566"/>
+      <!-- connectors -->
+      <rect x="206" y="630" width="60" height="22" rx="3" fill="#0c1a22" stroke="#244b59"/>
+      <rect x="356" y="630" width="58" height="22" rx="3" fill="#0c1a22" stroke="#244b59"/>
+      <rect x="270" y="720" width="80" height="40" rx="4" fill="#0a141b" stroke="#244b59"/>
+    </g>
+
+    <!-- FRONT glass -->
+    <g transform="translate(-52,14)">
+      <rect x="176" y="58" width="268" height="824" rx="44" fill="url(#chrome2)"/>
+      <rect x="188" y="70" width="244" height="800" rx="38" fill="url(#glass2)"/>
+      <rect x="206" y="160" width="208" height="560" rx="18" fill="#070a0e" stroke="#1a2129"/>
+      <circle cx="286" cy="120" r="14" fill="#0a0d12" stroke="#3a424c" stroke-width="2"/>
+      <circle cx="286" cy="118" r="2" fill="#5db4ff" opacity="0.7"/>
+      <circle cx="334" cy="120" r="14" fill="#0a0d12" stroke="#3a424c" stroke-width="2"/>
+      <circle cx="310" cy="816" r="22" fill="#0a0d12" stroke="url(#chrome2)" stroke-width="3"/>
+      <circle cx="310" cy="816" r="12" fill="none" stroke="#3a424c" stroke-width="1.5"/>
+    </g>
+
+  </g>
+</svg>

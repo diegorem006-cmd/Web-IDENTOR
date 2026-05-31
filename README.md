@@ -47,6 +47,16 @@ var WEB3FORMS_KEY   = 'TU_ACCESS_KEY_DE_WEB3FORMS';
 3. **Redes sociales** — actualiza los enlaces de Instagram y Facebook en
    `index.html` (busca `instagram.com/identor` y `facebook.com/identor`).
 
+4. **Fotos del equipo (hero 3D)** — el hero muestra un equipo que **rota y se
+   arma al hacer scroll**. Vienen ilustraciones de muestra; para usar tus fotos
+   reales, guarda 3 imágenes en `assets/img/` con estos nombres exactos y
+   reemplazan a las de muestra automáticamente (sin tocar código):
+   - `device-1.jpg` — de frente
+   - `device-2.jpg` — girado a la izquierda / despiezado
+   - `device-3.jpg` — girado más / armado, pantalla encendida
+
+   Recomendado: fondo transparente (PNG) o el mismo fondo oscuro, alto ~1300 px.
+
 > **Dominio:** cuando tengas el dominio final, reemplaza `https://www.identor.mx/`
 > en `index.html` (canonical y Open Graph), `sitemap.xml` y `robots.txt`.
 
@@ -65,11 +75,17 @@ npx serve .
 
 Luego abre <http://localhost:8080>.
 
-## 🌐 Publicar
+## 🌐 Publicar / ver en vivo
 
-- **GitHub Pages:** Settings → Pages → Branch `main` (o el branch del sitio) → `/root`.
+- **Vista previa instantánea (sin configurar nada, si el repo es público):**
+  abre en el navegador
+  `https://raw.githack.com/diegorem006-cmd/web-identor/claude/vibrant-mccarthy-KrJlI/index.html`
+- **GitHub Pages (URL permanente):** ya incluye un workflow
+  (`.github/workflows/deploy-pages.yml`). Una sola vez: **Settings → Pages →
+  Build and deployment → Source: "GitHub Actions"**. Cada push publica en
+  `https://diegorem006-cmd.github.io/web-identor/`.
 - **Netlify / Vercel / Cloudflare Pages:** arrastra la carpeta o conecta el repo.
-  No requiere comando de build; el directorio público es la raíz (`.`).
+  Sin comando de build; el directorio público es la raíz (`.`).
 
 ## 🎨 Personalización
 

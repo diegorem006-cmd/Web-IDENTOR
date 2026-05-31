@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 940" width="560" height="940">
+  <defs>
+    <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef2f5"/><stop offset="0.25" stop-color="#aab2bb"/>
+      <stop offset="0.5" stop-color="#6b727b"/><stop offset="0.75" stop-color="#c3c9d0"/>
+      <stop offset="1" stop-color="#454b54"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#13181f"/><stop offset="1" stop-color="#05070a"/>
+    </linearGradient>
+    <linearGradient id="refl" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.10"/>
+      <stop offset="0.4" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="amb" cx="50%" cy="40%" r="60%">
+      <stop offset="0" stop-color="#C9A84C" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#C9A84C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="280" cy="470" rx="250" ry="430" fill="url(#amb)"/>
+
+  <!-- chrome frame -->
+  <rect x="134" y="46" width="292" height="848" rx="54" fill="url(#chrome)"/>
+  <!-- glass -->
+  <rect x="146" y="58" width="268" height="824" rx="44" fill="url(#glass)"/>
+  <!-- reflection -->
+  <rect x="146" y="58" width="268" height="824" rx="44" fill="url(#refl)"/>
+  <!-- display region -->
+  <rect x="170" y="150" width="220" height="600" rx="20" fill="#070a0e"/>
+  <rect x="170" y="150" width="220" height="600" rx="20" fill="none" stroke="#1a2129" stroke-width="1"/>
+
+  <!-- top dual cameras -->
+  <circle cx="256" cy="110" r="15" fill="#0a0d12" stroke="#3a424c" stroke-width="2"/>
+  <circle cx="256" cy="110" r="6" fill="#11202e"/>
+  <circle cx="256" cy="108" r="2" fill="#5db4ff" opacity="0.7"/>
+  <circle cx="304" cy="110" r="15" fill="#0a0d12" stroke="#3a424c" stroke-width="2"/>
+  <circle cx="304" cy="110" r="6" fill="#10171f"/>
+  <rect x="276" y="106" width="8" height="8" rx="2" fill="#0c1118" stroke="#2a323b"/>
+
+  <!-- home / fingerprint button -->
+  <circle cx="280" cy="816" r="24" fill="#0a0d12" stroke="url(#chrome)" stroke-width="3"/>
+  <circle cx="280" cy="816" r="13" fill="none" stroke="#3a424c" stroke-width="1.5"/>
+
+  <!-- faint brand bar -->
+  <rect x="330" y="838" width="60" height="6" rx="3" fill="#2a313a"/>
+</svg>

@@ -1,0 +1,107 @@
+# IDENTOR — Sitio web
+
+Página web profesional para **IDENTOR**, empresa de seguridad electrónica y
+telecomunicaciones en CDMX. Diseño *dark premium* con un hero **3D interactivo**
+(red de seguridad: núcleo wireframe + nodos conectados + anillos orbitales)
+renderizado **sin librerías** — sólo Canvas + matemáticas 3D, para que cargue
+rápido y funcione bien en celular.
+
+## ✨ Características
+
+- Hero **3D** propio (Canvas 2D + proyección en perspectiva), reactivo al mouse
+  y al scroll, con calidad adaptativa (menos nodos en móvil, se pausa fuera de
+  pantalla y respeta `prefers-reduced-motion`).
+- 100 % estático: **HTML + CSS + JS vanilla**. Sin build, sin dependencias, sin
+  CDNs en tiempo de ejecución. Carga instantánea y máximo SEO.
+- Secciones: Hero · Servicios (8) · Por qué IDENTOR · Sectores · Cotización ·
+  Contacto · Footer.
+- Formulario de cotización funcional (envía a `identormx@gmail.com`).
+- Botón flotante de WhatsApp, menú fijo responsive, animaciones al hacer scroll.
+- SEO: meta tags, Open Graph/Twitter, `sitemap.xml`, `robots.txt` y datos
+  estructurados **JSON-LD** (LocalBusiness).
+- Accesible: navegación por teclado, foco visible, `aria-*`, modal con `Esc`.
+
+## 🚀 Configuración (3 pasos)
+
+Edita **`assets/js/main.js`** (al inicio del archivo):
+
+```js
+var WHATSAPP_NUMBER = '525500000000'; // país(52) + 10 dígitos, sin + ni espacios
+var WEB3FORMS_KEY   = 'TU_ACCESS_KEY_DE_WEB3FORMS';
+```
+
+1. **WhatsApp** — pon el número real en `WHATSAPP_NUMBER`
+   (ej. `52` + `55 1234 5678` → `525512345678`). El mensaje predefinido ya está
+   puesto: *"Hola, me interesa cotizar un servicio de IDENTOR"*.
+
+2. **Formulario → correo** — el envío usa [Web3Forms](https://web3forms.com)
+   (gratis):
+   - Entra a web3forms.com y genera un **Access Key** usando el correo
+     **identormx@gmail.com** (ahí llegarán las cotizaciones).
+   - Pega esa clave en `WEB3FORMS_KEY`.
+   - Listo: los envíos llegan a ese correo. *(Mientras no la configures, el
+     formulario invita amablemente a escribir por correo/WhatsApp.)*
+   - ¿Prefieres otro servicio? Funciona igual con Formspree, Getform o
+     EmailJS — sólo cambia la URL/lógica en `setupForm()`.
+
+3. **Redes sociales** — actualiza los enlaces de Instagram y Facebook en
+   `index.html` (busca `instagram.com/identor` y `facebook.com/identor`).
+
+> **Dominio:** cuando tengas el dominio final, reemplaza `https://www.identor.mx/`
+> en `index.html` (canonical y Open Graph), `sitemap.xml` y `robots.txt`.
+
+## 🖥️ Ver en local
+
+Es estático: puedes abrir `index.html` directamente, pero para que el
+formulario y las fuentes funcionen igual que en producción conviene un
+servidor local:
+
+```bash
+# Python
+python3 -m http.server 8080
+# o Node
+npx serve .
+```
+
+Luego abre <http://localhost:8080>.
+
+## 🌐 Publicar
+
+- **GitHub Pages:** Settings → Pages → Branch `main` (o el branch del sitio) → `/root`.
+- **Netlify / Vercel / Cloudflare Pages:** arrastra la carpeta o conecta el repo.
+  No requiere comando de build; el directorio público es la raíz (`.`).
+
+## 🎨 Personalización
+
+- **Colores y tipografías:** variables en `:root` dentro de
+  `assets/css/styles.css` (`--gold`, `--bg`, `--surface`, etc.).
+- **Hero 3D:** objeto `CONFIG` al inicio de `assets/js/scene3d.js`
+  (número de nodos, velocidad de giro, radio del núcleo, FOV…).
+- **Logo:** ahora es un SVG vectorial (escudo + lente). Para usar el logo real,
+  sustituye el `<svg class="brand__mark">` del header y footer, o cambia
+  `assets/favicon.svg`.
+- **Fotos reales:** el sitio no usa imágenes pesadas a propósito (rapidez). Para
+  añadir fotos de instalaciones, colócalas en `assets/` y usa
+  `loading="lazy"` con `width`/`height` definidos.
+
+## 📁 Estructura
+
+```
+.
+├── index.html
+├── assets/
+│   ├── css/styles.css
+│   ├── js/scene3d.js     # motor 3D del hero (sin librerías)
+│   ├── js/main.js        # nav, formulario, WhatsApp, modal — CONFIG aquí
+│   ├── favicon.svg
+│   └── og-image.svg      # imagen para compartir en redes
+├── site.webmanifest
+├── robots.txt
+└── sitemap.xml
+```
+
+## 🔒 Privacidad
+
+El sitio incluye un aviso de privacidad básico (modal). Los datos del
+formulario se usan únicamente para contactar y cotizar. Ajusta el texto en
+`index.html` (`#privacy-modal`) si lo necesitas.

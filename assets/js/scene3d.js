@@ -16,8 +16,8 @@
 
   // ---- Tunables --------------------------------------------------------
   var CONFIG = {
-    gold: '201,168,76',
-    hot: '255,238,200',
+    gold: '230,193,90',
+    hot: '255,240,205',
     fov: 3.0,            // perspective depth (camera distance in sphere radii)
     cloud: 150,          // node count (desktop) — auto-reduced on mobile
     cloudMobile: 80,

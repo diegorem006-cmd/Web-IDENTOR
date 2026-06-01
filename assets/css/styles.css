@@ -6,17 +6,17 @@
 /* ----------------------------- Tokens ------------------------------ */
 :root {
   --bg:          #0A0A0A;
-  --surface:     #1C1C1E;
-  --surface-2:   #232327;
-  --gold:        #C9A84C;
-  --gold-bright: #E2C36A;
-  --text:        #F5F5F0;
-  --muted:       #8E8E93;
+  --surface:     #24242B;       /* lighter anthracite -> paneles y texto resaltan */
+  --surface-2:   #2F2F37;
+  --gold:        #E6C15A;       /* dorado mas brillante para mejor contraste */
+  --gold-bright: #F4D27C;
+  --text:        #FAFAF6;       /* casi blanco */
+  --muted:       #BDBDC6;       /* gris secundario mucho mas legible */
 
-  --line:        rgba(245, 245, 240, 0.09);
-  --line-gold:   rgba(201, 168, 76, 0.30);
-  --gold-soft:   rgba(201, 168, 76, 0.10);
-  --gold-glow:   rgba(201, 168, 76, 0.18);
+  --line:        rgba(245, 245, 240, 0.16);
+  --line-gold:   rgba(230, 193, 90, 0.45);
+  --gold-soft:   rgba(230, 193, 90, 0.14);
+  --gold-glow:   rgba(230, 193, 90, 0.24);
 
   --font-display: 'Montserrat', system-ui, sans-serif;
   --font-body:    'Inter', system-ui, sans-serif;
@@ -416,7 +416,7 @@ ul { list-style: none; padding: 0; }
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.04em;
-  color: #5b5b60;
+  color: #9a9aa2;
 }
 
 /* Stage progress indicator */
@@ -686,7 +686,8 @@ ul { list-style: none; padding: 0; }
 .card__text {
   margin-top: 0.6rem;
   color: var(--muted);
-  font-size: 0.94rem;
+  font-size: 1rem;
+  line-height: 1.65;
 }
 
 /* --------------------------- Why IDENTOR --------------------------- */
@@ -820,7 +821,7 @@ ul { list-style: none; padding: 0; }
 }
 .field textarea { resize: vertical; min-height: 96px; }
 .field input::placeholder,
-.field textarea::placeholder { color: #5b5b60; }
+.field textarea::placeholder { color: #86868e; }
 .field input:focus,
 .field textarea:focus,
 .field select:focus {
@@ -916,7 +917,7 @@ ul { list-style: none; padding: 0; }
 }
 .footer__col a:hover,
 .footer__col button:hover { color: var(--text); }
-.footer__muted { color: #5b5b60 !important; }
+.footer__muted { color: #9a9aa2 !important; }
 
 .footer__bottom {
   display: flex;
@@ -1218,7 +1219,7 @@ ul { list-style: none; padding: 0; }
   font-size: clamp(2.4rem, 5vw, 4rem);
   line-height: 0.85;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(201, 168, 76, 0.55);
+  -webkit-text-stroke: 1px rgba(230, 193, 90, 0.6);
   padding-top: 0;
 }
 /* Subtle always-on top accent on service cards */

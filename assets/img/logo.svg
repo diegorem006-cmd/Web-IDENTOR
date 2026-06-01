@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 232 64" width="232" height="64">
+  <defs><style><![CDATA[
+    @import url('https://fonts.googleapis.com/css2?family=Saira:wght@700&display=swap');
+    .t { font-family: 'Saira', Arial, sans-serif; font-weight: 700; fill: #FAFBF7; }
+  ]]></style></defs>
+  <text class="t" x="143" y="45" text-anchor="end" font-size="44" letter-spacing="1">IDENT</text>
+  <g transform="translate(165,29)">
+    <circle r="15" fill="none" stroke="#FAFBF7" stroke-width="2.6"/>
+    <circle r="7.5" fill="none" stroke="#FAFBF7" stroke-width="1.5" opacity="0.6"/>
+    <path d="M0 -22 V-7 M0 7 V22 M-22 0 H-7 M7 0 H22" stroke="#FAFBF7" stroke-width="2.6" stroke-linecap="round"/>
+    <circle r="3.4" fill="#E6C15A"/>
+  </g>
+  <text class="t" x="187" y="45" text-anchor="start" font-size="44" letter-spacing="1">R</text>
+</svg>

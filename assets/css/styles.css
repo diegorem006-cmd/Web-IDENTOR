@@ -5,21 +5,23 @@
 
 /* ----------------------------- Tokens ------------------------------ */
 :root {
-  --bg:          #0A0A0A;
-  --surface:     #24242B;       /* lighter anthracite -> paneles y texto resaltan */
-  --surface-2:   #2F2F37;
-  --gold:        #E6C15A;       /* dorado mas brillante para mejor contraste */
+  --bg:          #0A0C12;       /* negro con matiz azul noche (del logo) */
+  --surface:     #181D27;       /* antracita azulado, claro para legibilidad */
+  --surface-2:   #222937;
+  --gold:        #E6C15A;       /* dorado brillante */
   --gold-bright: #F4D27C;
-  --text:        #FAFAF6;       /* casi blanco */
-  --muted:       #BDBDC6;       /* gris secundario mucho mas legible */
+  --text:        #FAFBF7;       /* casi blanco */
+  --muted:       #B7BDCA;       /* gris frio legible */
+  --blue:        #6AA0E0;       /* acento azul del logo */
 
-  --line:        rgba(245, 245, 240, 0.16);
+  --line:        rgba(225, 232, 248, 0.15);
   --line-gold:   rgba(230, 193, 90, 0.45);
   --gold-soft:   rgba(230, 193, 90, 0.14);
   --gold-glow:   rgba(230, 193, 90, 0.24);
+  --blue-soft:   rgba(106, 160, 224, 0.14);
 
-  --font-display: 'Montserrat', system-ui, sans-serif;
-  --font-body:    'Inter', system-ui, sans-serif;
+  --font-display: 'Saira', system-ui, sans-serif;
+  --font-body:    'Manrope', system-ui, sans-serif;
   --font-mono:    'IBM Plex Mono', ui-monospace, monospace;
 
   --container: 1240px;
@@ -237,6 +239,12 @@ ul { list-style: none; padding: 0; }
   letter-spacing: 0.18em;
   color: var(--text);
 }
+/* Real IDENTOR logo lockup (wordmark + reticle "O") */
+.brand__logo { height: 30px; width: auto; display: block; color: var(--text); }
+.brand--footer .brand__logo { height: 28px; }
+.brand__txt { fill: currentColor; font-family: var(--font-display); }
+.brand__dot { fill: var(--gold); }
+.brand:hover .brand__dot { fill: var(--gold-bright); }
 
 .nav__links {
   display: flex;
@@ -595,7 +603,7 @@ ul { list-style: none; padding: 0; }
   padding-block: var(--section-y);
   scroll-margin-top: var(--header-h);
 }
-.section--alt { background: linear-gradient(180deg, var(--bg), #0d0d0f 50%, var(--bg)); }
+.section--alt { background: linear-gradient(180deg, var(--bg), #0c0f18 50%, var(--bg)); }
 .section--alt::before,
 .section--alt::after {
   content: "";
@@ -866,10 +874,22 @@ ul { list-style: none; padding: 0; }
 
 /* ------------------------------ Footer ----------------------------- */
 .site-footer {
+  position: relative;
+  overflow: hidden;
   border-top: 1px solid var(--line);
-  background: #070707;
+  background: #07090e;
   padding-top: clamp(3.5rem, 7vw, 5.5rem);
 }
+.footer__watermark {
+  position: absolute;
+  right: -34px; bottom: -36px;
+  width: 320px; height: 320px;
+  color: var(--text);
+  opacity: 0.045;
+  pointer-events: none;
+}
+.footer__watermark svg { width: 100%; height: 100%; }
+.footer, .footer__bottom { position: relative; z-index: 1; }
 .footer {
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1fr;

@@ -290,9 +290,7 @@ ul { list-style: none; padding: 0; }
 /* ------------------------------- Hero ------------------------------ */
 .hero { position: relative; }
 /* Tall scroll track that drives the 3D device sequence (only when motion is OK) */
-@media (prefers-reduced-motion: no-preference) {
-  .hero { height: 360vh; }
-}
+/* La altura del hero la definen sus 3 páginas a pantalla completa. */
 .hero__pin {
   position: sticky;
   top: 0;
@@ -428,26 +426,73 @@ ul { list-style: none; padding: 0; }
 }
 
 /* Stage progress indicator */
+/* Indicador de página (puntos fijos a la derecha) */
 .hero__progress {
+  position: fixed;
+  right: clamp(12px, 2vw, 26px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1.4rem;
-  margin-top: 2.4rem;
+  flex-direction: column;
+  gap: 0.7rem;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease);
 }
 .hero__progress li {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: rgba(225, 232, 248, 0.25);
+  transition: background 0.4s var(--ease), height 0.4s var(--ease);
+}
+.hero__progress li.is-on { background: var(--gold); height: 26px; border-radius: 5px; }
+
+/* ---- Stable 3-page hero (text fixed, device image changes on scroll) ---- */
+.hero { overflow: hidden; }
+.hero__page {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  opacity: 0.45;
-  transition: opacity 0.4s var(--ease), color 0.4s var(--ease);
 }
-.hero__progress li span { color: var(--gold); }
-.hero__progress li.is-on { opacity: 1; color: var(--text); }
+.hero__page[data-s="0"] { padding-top: calc(var(--header-h) + 2vh); }
+.hero__page-inner {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--pad-x);
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+.hero__copy { max-width: 36rem; }
+.hero__visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 60vh;
+}
+.hero__device-img {
+  grid-area: 1 / 1;
+  max-height: 74vh;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 40px 70px rgba(0, 0, 0, 0.6));
+}
+
+@media (max-width: 860px) {
+  .hero__page { min-height: auto; padding-block: clamp(4.5rem, 13vh, 7rem); }
+  .hero__page[data-s="0"] { padding-top: calc(var(--header-h) + 5vh); }
+  .hero__page-inner { grid-template-columns: 1fr; gap: 2.4rem; }
+  .hero__visual { order: -1; min-height: auto; }
+  .hero__device-img { max-height: 42vh; }
+  .hero__copy { max-width: none; }
+  .hero__progress { display: none; }
+}
 
 .hero__grid {
   position: absolute; inset: 0;

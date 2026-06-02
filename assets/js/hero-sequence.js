@@ -1,77 +1,36 @@
 /* =====================================================================
-   IDENTOR — Hero scroll narrative
-   Pins the hero and, as you scroll, crossfades BOTH:
-     • the device frames (front -> exploded -> assembled, with a turn), and
-     • the text stages (Pitch -> Quiénes somos -> En números),
-   so the content and layout change at each scroll step.
+   IDENTOR — Hero pages indicator (stable)
+   Three full-screen pages, each with its own fixed text + device image.
+   This only lights up the side progress dots for the page you're on and
+   hides them once you leave the hero. No scroll-scrubbing, no transforms
+   — so nothing jitters.
    ===================================================================== */
 (function () {
   'use strict';
+  if (!('IntersectionObserver' in window)) return;
 
-  var slice = function (nl) { return Array.prototype.slice.call(nl); };
-  var clamp = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
+  var slice = function (n) { return Array.prototype.slice.call(n); };
+  var hero  = document.getElementById('inicio');
+  var pages = slice(document.querySelectorAll('.hero__page'));
+  var dots  = slice(document.querySelectorAll('.hero__progress li'));
+  var prog  = document.querySelector('.hero__progress');
+  if (!pages.length) return;
 
-  var hero   = document.getElementById('inicio');
-  var device = document.getElementById('hero-device');
-  if (!hero) return;
-
-  var frames = device ? slice(device.querySelectorAll('.hero__frame')) : [];
-  var stages = slice(document.querySelectorAll('.hero__stage'));
-  var dots   = slice(document.querySelectorAll('.hero__progress li'));
-  var n = Math.max(frames.length, stages.length);
-  if (n < 2) return;
-
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function setActive(active) {
-    stages.forEach(function (s, i) {
-      s.classList.toggle('is-on', i === active);
-      s.setAttribute('aria-hidden', i === active ? 'false' : 'true');
+  // Light the dot for whichever page is crossing the middle of the screen.
+  var active = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var i = pages.indexOf(e.target);
+      pages.forEach(function (p, k) { p.classList.toggle('is-active', k === i); });
+      dots.forEach(function (d, k) { d.classList.toggle('is-on', k === i); });
     });
-    dots.forEach(function (d, i) { d.classList.toggle('is-on', i === active); });
+  }, { rootMargin: '-48% 0px -48% 0px', threshold: 0 });
+  pages.forEach(function (p) { active.observe(p); });
+
+  // Show the dots only while the hero is on screen.
+  if (prog && hero) {
+    new IntersectionObserver(function (es) {
+      prog.style.opacity = es[0].isIntersecting ? '1' : '0';
+    }, { threshold: 0 }).observe(hero);
   }
-
-  // Reduced motion: show the first stage/frame, no scrubbing.
-  if (reduce) {
-    frames.forEach(function (f, i) { f.style.opacity = i === 0 ? '1' : '0'; });
-    stages.forEach(function (s, i) { s.style.opacity = i === 0 ? '1' : '0'; });
-    setActive(0);
-    return;
-  }
-
-  var ticking = false;
-  function render() {
-    ticking = false;
-    var dist = hero.offsetHeight - window.innerHeight;
-    var p = clamp((-hero.getBoundingClientRect().top) / (dist > 0 ? dist : 1));
-    var seg = p * (n - 1);
-    var active = Math.round(seg);
-
-    // Device frames: crossfade + subtle pop
-    frames.forEach(function (f, i) {
-      var op = clamp(1 - Math.abs(seg - i));
-      f.style.opacity = op.toFixed(3);
-      f.style.zIndex = String(Math.round(op * 10));
-      f.style.transform = 'scale(' + (0.97 + op * 0.04).toFixed(3) + ')';
-    });
-
-    // Text stages: crossfade + slight vertical drift
-    stages.forEach(function (s, i) {
-      var op = clamp(1 - Math.abs(seg - i));
-      s.style.opacity = op.toFixed(3);
-      s.style.transform = 'translateY(' + ((i - seg) * 14).toFixed(1) + 'px)';
-    });
-
-    setActive(active);
-
-    if (device) {
-      device.style.transform =
-        'perspective(1500px) rotateY(' + (-7 * p).toFixed(2) + 'deg) scale(' + (1 + 0.05 * p).toFixed(3) + ')';
-    }
-  }
-
-  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  render();
 })();

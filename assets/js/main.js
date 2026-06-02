@@ -14,7 +14,7 @@
         cotizaciones. Mientras no la pongas, el formulario invita a
         escribir por correo.
      =================================================================== */
-  var WHATSAPP_NUMBER  = '525500000000'; // <-- CAMBIAR cuando tengan el número
+  var WHATSAPP_NUMBER  = '5215519381673'; // +52 1 55 1938 1673
   var WHATSAPP_MESSAGE = 'Hola, me interesa cotizar un servicio de IDENTOR';
   var WEB3FORMS_KEY    = 'TU_ACCESS_KEY_DE_WEB3FORMS'; // <-- CAMBIAR
   var CONTACT_EMAIL    = 'identormx@gmail.com';

@@ -1136,7 +1136,11 @@ ul { list-style: none; padding: 0; }
   margin: 0.8rem 0 1.2rem;
 }
 .modal__body p { color: var(--muted); margin-bottom: 1rem; font-size: 0.95rem; }
-.modal__body a { color: var(--gold); }
+.modal__body p a { color: var(--gold); }
+.modal--lg .modal__panel { max-width: 720px; }
+.modal__body .btn { margin-top: 0.5rem; }
+.modal__body p.marcas__list { color: var(--text); font-size: 1.06rem; line-height: 1.7; }
+.marcas__list strong { color: var(--gold); font-weight: 700; }
 
 /* =========================== Responsive ============================ */
 @media (max-width: 1024px) {

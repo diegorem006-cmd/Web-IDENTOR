@@ -337,9 +337,9 @@
             integradas en un solo sistema que monitoreas desde tu celular y que
             diseñamos, cableamos y mantenemos nosotros mismos.
           </p>
-          <a href="#marcas" class="btn btn--gold">Ver marcas líderes
+          <button type="button" class="btn btn--gold" data-open-marcas>Ver marcas líderes
             <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          </button>
         </div>
         <div class="showcase__visual reveal" data-reveal style="--d:.12s">
           <img class="showcase__eq showcase__eq--dome" src="assets/img/eq-dome.svg" alt="Cámara de videovigilancia tipo domo" decoding="async" loading="lazy">
@@ -349,32 +349,6 @@
           <span class="showcase__badge showcase__badge--2">MX<small>Nacional</small></span>
           <span class="showcase__badge showcase__badge--3">App<small>Monitoreo</small></span>
         </div>
-      </div>
-    </section>
-
-    <!-- ===================== MARCAS ===================== -->
-    <section class="section section--alt" id="marcas">
-      <div class="container">
-        <header class="section__head">
-          <p class="section__index reveal" data-reveal>[ · ] Marcas</p>
-          <h2 class="section__title reveal" data-reveal style="--d:.08s">Marcas líderes globales</h2>
-          <p class="section__intro reveal" data-reveal style="--d:.16s">
-            Diseñamos cada sistema con las principales marcas del mundo en seguridad
-            electrónica, control de acceso y redes — equipos de gama alta con soporte
-            y refacciones.
-          </p>
-        </header>
-
-        <ul class="grid grid--brands">
-          <li class="brand-card reveal" data-reveal><span class="card__corner" aria-hidden="true"></span><span class="brand-card__name">Hikvision</span><span class="brand-card__cat">Videovigilancia</span></li>
-          <li class="brand-card reveal" data-reveal style="--d:.05s"><span class="card__corner" aria-hidden="true"></span><span class="brand-card__name">AccessPRO</span><span class="brand-card__cat">Control de acceso</span></li>
-          <li class="brand-card reveal" data-reveal style="--d:.1s"><span class="card__corner" aria-hidden="true"></span><span class="brand-card__name">Ruijie</span><span class="brand-card__cat">Redes y conectividad</span></li>
-          <li class="brand-card reveal" data-reveal style="--d:.15s"><span class="card__corner" aria-hidden="true"></span><span class="brand-card__name">ZKTeco</span><span class="brand-card__cat">Control de acceso y biometría</span></li>
-          <li class="brand-card reveal" data-reveal><span class="card__corner" aria-hidden="true"></span><span class="brand-card__name">Akuvox</span><span class="brand-card__cat">Videoporteros</span></li>
-          <li class="brand-card reveal" data-reveal style="--d:.05s"><span class="card__corner" aria-hidden="true"></span><span class="brand-card__name">Hanwha</span><span class="brand-card__cat">Videovigilancia</span></li>
-          <li class="brand-card reveal" data-reveal style="--d:.1s"><span class="card__corner" aria-hidden="true"></span><span class="brand-card__name">FAAC</span><span class="brand-card__cat">Barreras y automatización</span></li>
-          <li class="brand-card reveal" data-reveal style="--d:.15s"><span class="card__corner" aria-hidden="true"></span><span class="brand-card__name">Ubiquiti</span><span class="brand-card__cat">Redes y WiFi</span></li>
-        </ul>
       </div>
     </section>
 
@@ -674,6 +648,32 @@
         <p>No vendemos, rentamos ni compartimos tu información con terceros con fines comerciales. Conservamos tus datos solo durante el tiempo necesario para atender tu solicitud.</p>
         <p>Puedes solicitar el acceso, rectificación, cancelación u oposición al uso de tus datos (derechos ARCO) escribiendo a <a href="mailto:identormx@gmail.com">identormx@gmail.com</a>.</p>
         <p class="footer__muted">Este aviso es un resumen informativo. Última actualización: 2026.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== MARCAS (overlay) ===================== -->
+  <div class="modal modal--lg" id="marcas-modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close-marcas></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="marcas-title">
+      <span class="card__corner" aria-hidden="true"></span>
+      <button type="button" class="modal__close" aria-label="Cerrar" data-close-marcas>
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <p class="section__index">[ · ] Marcas líderes globales</p>
+      <h3 id="marcas-title" class="modal__title">Las mejores marcas del mundo, en tu proyecto</h3>
+      <div class="modal__body">
+        <p class="marcas__list">Trabajamos con marcas líderes en seguridad electrónica, control de acceso y redes:
+          <strong>Hikvision</strong>, <strong>AccessPRO</strong>, <strong>Ruijie</strong>, <strong>ZKTeco</strong>,
+          <strong>Akuvox</strong>, <strong>Hanwha</strong>, <strong>FAAC</strong> y <strong>Ubiquiti</strong>.</p>
+        <p>No instalamos cualquier equipo. Elegimos marcas reconocidas a nivel mundial por su
+          <strong>calidad, durabilidad y tecnología de punta</strong>. Eso significa sistemas más
+          confiables, con soporte técnico real, refacciones disponibles y actualizaciones constantes.</p>
+        <p>Para cada proyecto seleccionamos la marca ideal y la integramos en una sola solución que
+          controlas desde tu celular — para que tu inversión en seguridad dure años y nunca te deje a oscuras.</p>
+        <a href="#cotizar" class="btn btn--gold" data-close-marcas>Cotizar mi proyecto
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
     </div>
   </div>

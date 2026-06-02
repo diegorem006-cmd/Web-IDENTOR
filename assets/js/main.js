@@ -35,7 +35,8 @@
     setupCardTilt();
     setupWhatsApp();
     setupForm();
-    setupModal();
+    setupModal('#privacy-modal', '[data-open-privacy]', '[data-close-privacy]');
+    setupModal('#marcas-modal', '[data-open-marcas]', '[data-close-marcas]');
   }
 
   /* ----------------------------- Footer year ----------------------- */
@@ -205,8 +206,8 @@
   }
 
   /* ----------------------------- Modal ----------------------------- */
-  function setupModal() {
-    var modal = $('#privacy-modal');
+  function setupModal(sel, openSel, closeSel) {
+    var modal = $(sel);
     if (!modal) return;
     var lastFocus = null;
 
@@ -225,10 +226,10 @@
       if (lastFocus) lastFocus.focus();
     };
 
-    $$('[data-open-privacy]').forEach(function (b) {
+    $$(openSel).forEach(function (b) {
       b.addEventListener('click', open);
     });
-    $$('[data-close-privacy]').forEach(function (b) {
+    $$(closeSel).forEach(function (b) {
       b.addEventListener('click', close);
     });
     document.addEventListener('keydown', function (e) {

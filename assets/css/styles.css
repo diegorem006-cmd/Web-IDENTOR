@@ -447,8 +447,41 @@ ul { list-style: none; padding: 0; }
 }
 .hero__progress li.is-on { background: var(--gold); height: 26px; border-radius: 5px; }
 
-/* ---- Stable 3-page hero (text fixed, device image changes on scroll) ---- */
-.hero { overflow: hidden; }
+/* ---- Sticky-device hero: text scrolls, device stays on screen ---- */
+.hero__shell {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--pad-x);
+  display: grid;
+  grid-template-columns: 1.02fr 0.98fr;
+  column-gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+.hero__pages    { grid-column: 1; grid-row: 1; min-width: 0; }
+.hero__stagecol { grid-column: 2; grid-row: 1; }
+.hero__sticky {
+  position: sticky;
+  top: var(--header-h);
+  height: calc(100vh - var(--header-h));
+  height: calc(100svh - var(--header-h));
+  display: grid;
+  place-items: center;
+}
+.hero__device { position: relative; display: grid; place-items: center; width: 100%; }
+.hero__frame {
+  grid-area: 1 / 1;
+  max-height: 76vh;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.55s var(--ease);
+  filter: drop-shadow(0 40px 70px rgba(0, 0, 0, 0.6));
+}
+.hero__frame.is-active { opacity: 1; }
+
 .hero__page {
   position: relative;
   z-index: 1;
@@ -458,38 +491,22 @@ ul { list-style: none; padding: 0; }
   align-items: center;
 }
 .hero__page[data-s="0"] { padding-top: calc(var(--header-h) + 2vh); }
-.hero__page-inner {
-  width: 100%;
-  max-width: var(--container);
-  margin-inline: auto;
-  padding-inline: var(--pad-x);
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: center;
-}
 .hero__copy { max-width: 36rem; }
-.hero__visual {
-  position: relative;
-  display: grid;
-  place-items: center;
-  min-height: 60vh;
-}
-.hero__device-img {
-  grid-area: 1 / 1;
-  max-height: 74vh;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 40px 70px rgba(0, 0, 0, 0.6));
-}
 
 @media (max-width: 860px) {
-  .hero__page { min-height: auto; padding-block: clamp(4.5rem, 13vh, 7rem); }
-  .hero__page[data-s="0"] { padding-top: calc(var(--header-h) + 5vh); }
-  .hero__page-inner { grid-template-columns: 1fr; gap: 2.4rem; }
-  .hero__visual { order: -1; min-height: auto; }
-  .hero__device-img { max-height: 42vh; }
+  .hero__shell { display: block; }
+  .hero__stagecol {
+    position: sticky;
+    top: var(--header-h);
+    z-index: 2;
+    height: 40vh;
+    background: linear-gradient(180deg, var(--bg) 66%, transparent);
+  }
+  .hero__sticky { position: static; height: 100%; }
+  .hero__frame { max-height: 33vh; }
+  .hero__pages { position: relative; z-index: 1; }
+  .hero__page { min-height: auto; padding-block: clamp(3rem, 9vh, 5rem); }
+  .hero__page[data-s="0"] { padding-top: 2vh; }
   .hero__copy { max-width: none; }
   .hero__progress { display: none; }
 }

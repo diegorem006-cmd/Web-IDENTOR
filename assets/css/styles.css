@@ -332,10 +332,10 @@ ul { list-style: none; padding: 0; }
 .hero__frame[data-i="0"] { opacity: 1; }   /* default before JS / reduced-motion */
 .hero__device-glow {
   grid-area: 1 / 1;
-  width: 78%;
-  aspect-ratio: 1;
-  background: radial-gradient(circle, var(--gold-glow), transparent 62%);
-  filter: blur(36px);
+  width: 72%;
+  height: 96%;
+  background: radial-gradient(50% 46% at 50% 40%, var(--gold-glow), transparent 66%);
+  filter: blur(34px);
   z-index: -1;
 }
 
@@ -478,14 +478,25 @@ ul { list-style: none; padding: 0; }
 /* Arco dorado de fondo (puesta en escena tipo lujo) */
 .hero__arch {
   grid-area: 1 / 1;
-  width: min(74%, 370px);
-  height: 86%;
+  position: relative;
+  width: min(76%, 380px);
+  height: 88%;
   align-self: center;
   border: 1.5px solid var(--line-gold);
   border-top-width: 2px;
-  border-radius: 999px 999px 22px 22px;
-  background: linear-gradient(180deg, var(--gold-soft), transparent 58%);
+  border-radius: 999px 999px 24px 24px;
+  background:
+    radial-gradient(78% 55% at 50% 28%, rgba(233, 207, 138, 0.14), transparent 62%),
+    linear-gradient(180deg, rgba(46, 38, 25, 0.55), rgba(24, 19, 13, 0.12));
+  box-shadow: inset 0 0 70px rgba(233, 207, 138, 0.07);
   z-index: -2;
+}
+.hero__arch::before {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(233, 207, 138, 0.22);
+  border-radius: 999px 999px 16px 16px;
 }
 @media (max-width: 860px) { .hero__arch { display: none; } }
 .hero__frame {
@@ -529,15 +540,12 @@ ul { list-style: none; padding: 0; }
   .hero__progress { display: none; }
 }
 
+/* Satín cálido (en vez del grid de cuadros) */
 .hero__grid {
   position: absolute; inset: 0;
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 64px 64px;
-  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 80%);
-          mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 80%);
-  opacity: 0.5;
+  background:
+    linear-gradient(118deg, transparent 26%, rgba(233, 207, 138, 0.05) 43%, transparent 58%),
+    linear-gradient(118deg, transparent 58%, rgba(217, 150, 90, 0.045) 72%, transparent 86%);
 }
 .hero__glow {
   position: absolute;

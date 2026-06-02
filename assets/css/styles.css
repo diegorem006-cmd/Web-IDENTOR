@@ -5,20 +5,20 @@
 
 /* ----------------------------- Tokens ------------------------------ */
 :root {
-  --bg:          #0A0C12;       /* negro con matiz azul noche (del logo) */
-  --surface:     #181D27;       /* antracita azulado, claro para legibilidad */
-  --surface-2:   #222937;
-  --gold:        #E6C15A;       /* dorado brillante */
-  --gold-bright: #F4D27C;
-  --text:        #FAFBF7;       /* casi blanco */
-  --muted:       #B7BDCA;       /* gris frio legible */
-  --blue:        #6AA0E0;       /* acento azul del logo */
+  --bg:          #18130D;       /* dark cálido (espresso), un poco más claro */
+  --surface:     #241D14;       /* panel cálido, más claro para legibilidad */
+  --surface-2:   #2E2619;
+  --gold:        #E9CF8A;       /* champán más claro */
+  --gold-bright: #F5E8BC;
+  --text:        #F7F3EA;       /* blanco cálido */
+  --muted:       #C2B8A6;       /* gris cálido legible */
+  --blue:        #D9A36A;       /* acento bronce cálido */
 
-  --line:        rgba(225, 232, 248, 0.15);
-  --line-gold:   rgba(230, 193, 90, 0.45);
-  --gold-soft:   rgba(230, 193, 90, 0.14);
-  --gold-glow:   rgba(230, 193, 90, 0.24);
-  --blue-soft:   rgba(106, 160, 224, 0.14);
+  --line:        rgba(245, 236, 220, 0.14);
+  --line-gold:   rgba(233, 207, 138, 0.45);
+  --gold-soft:   rgba(233, 207, 138, 0.13);
+  --gold-glow:   rgba(233, 207, 138, 0.22);
+  --blue-soft:   rgba(217, 163, 106, 0.14);
 
   --font-display: 'Saira', system-ui, sans-serif;
   --font-body:    'Manrope', system-ui, sans-serif;
@@ -45,7 +45,10 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: var(--bg);
+  background:
+    radial-gradient(120% 85% at 72% 6%, rgba(233, 207, 138, 0.07), transparent 52%),
+    radial-gradient(110% 80% at 16% 94%, rgba(217, 150, 90, 0.06), transparent 55%),
+    var(--bg);
   color: var(--text);
   line-height: 1.7;
   font-size: 1rem;
@@ -472,6 +475,19 @@ ul { list-style: none; padding: 0; }
   place-items: center;
 }
 .hero__device { position: relative; display: grid; place-items: center; width: 100%; }
+/* Arco dorado de fondo (puesta en escena tipo lujo) */
+.hero__arch {
+  grid-area: 1 / 1;
+  width: min(74%, 370px);
+  height: 86%;
+  align-self: center;
+  border: 1.5px solid var(--line-gold);
+  border-top-width: 2px;
+  border-radius: 999px 999px 22px 22px;
+  background: linear-gradient(180deg, var(--gold-soft), transparent 58%);
+  z-index: -2;
+}
+@media (max-width: 860px) { .hero__arch { display: none; } }
 .hero__frame {
   grid-area: 1 / 1;
   max-height: 76vh;
@@ -1198,17 +1214,17 @@ ul { list-style: none; padding: 0; }
 }
 .aurora .a1 {
   width: 62vw; height: 62vw; left: -16vw; top: -12vh;
-  background: radial-gradient(circle, rgba(201,168,76,0.30), transparent 70%);
+  background: radial-gradient(circle, rgba(233, 207, 138, 0.22), transparent 70%);
   animation: drift1 28s ease-in-out infinite alternate;
 }
 .aurora .a2 {
   width: 56vw; height: 56vw; right: -18vw; top: 34vh;
-  background: radial-gradient(circle, rgba(176,116,40,0.22), transparent 70%);
+  background: radial-gradient(circle, rgba(206, 140, 70, 0.18), transparent 70%);
   animation: drift2 34s ease-in-out infinite alternate;
 }
 .aurora .a3 {
   width: 50vw; height: 50vw; left: 18vw; bottom: -22vh;
-  background: radial-gradient(circle, rgba(58,86,150,0.16), transparent 70%);
+  background: radial-gradient(circle, rgba(180, 120, 78, 0.13), transparent 70%);
   animation: drift1 40s ease-in-out infinite alternate-reverse;
 }
 @keyframes drift1 { to { transform: translate(8vw, 6vh) scale(1.15); } }

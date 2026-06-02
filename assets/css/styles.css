@@ -457,10 +457,12 @@ ul { list-style: none; padding: 0; }
   display: grid;
   grid-template-columns: 1.02fr 0.98fr;
   column-gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: start;
+  align-items: stretch;
 }
 .hero__pages    { grid-column: 1; grid-row: 1; min-width: 0; }
-.hero__stagecol { grid-column: 2; grid-row: 1; }
+/* La columna del equipo se estira a lo alto de las 3 páginas para que el
+   sticky pueda viajar contigo durante todo el scroll del hero. */
+.hero__stagecol { grid-column: 2; grid-row: 1; align-self: stretch; }
 .hero__sticky {
   position: sticky;
   top: var(--header-h);

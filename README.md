@@ -1,7 +1,7 @@
 # IDENTOR — Sitio web
 
-Página web profesional para **IDENTOR**, empresa de seguridad electrónica y
-telecomunicaciones en CDMX. Diseño *dark premium* con un hero **3D interactivo**
+Página web profesional para **IDENTOR**, empresa mexicana de seguridad
+electrónica y telecomunicaciones con cobertura en toda la República Mexicana. Diseño *dark premium* con un hero **3D interactivo**
 (red de seguridad: núcleo wireframe + nodos conectados + anillos orbitales)
 renderizado **sin librerías** — sólo Canvas + matemáticas 3D, para que cargue
 rápido y funcione bien en celular.

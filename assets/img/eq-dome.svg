@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 320" width="340" height="320">
+  <defs>
+    <linearGradient id="dChr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef2f5"/><stop offset="0.35" stop-color="#9aa3ad"/>
+      <stop offset="0.7" stop-color="#5c636c"/><stop offset="1" stop-color="#3a4049"/>
+    </linearGradient>
+    <linearGradient id="dBdy" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b2230"/><stop offset="1" stop-color="#080c12"/>
+    </linearGradient>
+    <radialGradient id="dLens" cx="42%" cy="40%" r="60%">
+      <stop offset="0" stop-color="#cfe6ff"/><stop offset="0.4" stop-color="#2f6fae"/><stop offset="1" stop-color="#0a1622"/>
+    </radialGradient>
+    <radialGradient id="dAmb" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#E6C15A" stop-opacity="0.15"/><stop offset="1" stop-color="#E6C15A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="170" cy="160" rx="150" ry="140" fill="url(#dAmb)"/>
+
+  <!-- ceiling base -->
+  <ellipse cx="170" cy="92" rx="120" ry="30" fill="url(#dChr)"/>
+  <ellipse cx="170" cy="84" rx="120" ry="30" fill="url(#dBdy)"/>
+  <ellipse cx="170" cy="84" rx="120" ry="30" fill="none" stroke="#3a4653" stroke-width="2"/>
+
+  <!-- dome -->
+  <path d="M62 86 A112 112 0 0 0 278 86 Z" fill="url(#dBdy)" stroke="url(#dChr)" stroke-width="5"/>
+  <ellipse cx="128" cy="128" rx="44" ry="26" fill="#ffffff" opacity="0.05"/>
+
+  <!-- camera module inside -->
+  <circle cx="170" cy="150" r="32" fill="#0a1320" stroke="#3a4653" stroke-width="2"/>
+  <circle cx="170" cy="150" r="20" fill="url(#dLens)"/>
+  <circle cx="170" cy="150" r="8" fill="#08111c"/>
+  <circle cx="160" cy="141" r="4" fill="#dfeeff" opacity="0.8"/>
+  <circle cx="214" cy="104" r="4" fill="#E6C15A"/>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 380" width="540" height="380">
+  <defs>
+    <linearGradient id="cChr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef2f5"/><stop offset="0.3" stop-color="#9aa3ad"/>
+      <stop offset="0.6" stop-color="#5c636c"/><stop offset="1" stop-color="#3a4049"/>
+    </linearGradient>
+    <linearGradient id="cBdy" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b2230"/><stop offset="1" stop-color="#0b0f16"/>
+    </linearGradient>
+    <radialGradient id="cLens" cx="42%" cy="40%" r="60%">
+      <stop offset="0" stop-color="#cfe6ff"/><stop offset="0.4" stop-color="#2f6fae"/><stop offset="1" stop-color="#0a1622"/>
+    </radialGradient>
+    <radialGradient id="cAmb" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#E6C15A" stop-opacity="0.16"/><stop offset="1" stop-color="#E6C15A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="300" cy="200" rx="240" ry="150" fill="url(#cAmb)"/>
+
+  <!-- mount -->
+  <rect x="150" y="298" width="118" height="26" rx="9" fill="url(#cChr)"/>
+  <rect x="198" y="232" width="24" height="70" rx="6" fill="url(#cChr)"/>
+
+  <g transform="rotate(-8 300 186)">
+    <!-- body -->
+    <rect x="150" y="140" width="300" height="94" rx="47" fill="url(#cBdy)" stroke="#3a4653" stroke-width="2"/>
+    <rect x="168" y="150" width="250" height="30" rx="15" fill="#ffffff" opacity="0.04"/>
+    <!-- sunshade -->
+    <rect x="150" y="122" width="206" height="44" rx="22" fill="url(#cChr)"/>
+    <!-- lens housing -->
+    <circle cx="450" cy="187" r="52" fill="#0c1320" stroke="url(#cChr)" stroke-width="6"/>
+    <circle cx="450" cy="187" r="46" fill="none" stroke="#E6C15A" stroke-opacity="0.4" stroke-width="2" stroke-dasharray="2 9"/>
+    <circle cx="450" cy="187" r="38" fill="url(#cLens)"/>
+    <circle cx="450" cy="187" r="16" fill="#08111c"/>
+    <circle cx="436" cy="174" r="6" fill="#dfeeff" opacity="0.85"/>
+    <!-- accents -->
+    <circle cx="184" cy="187" r="4.5" fill="#E6C15A"/>
+    <rect x="206" y="200" width="120" height="6" rx="3" fill="#E6C15A" opacity="0.45"/>
+  </g>
+</svg>

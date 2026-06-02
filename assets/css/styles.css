@@ -1253,15 +1253,17 @@ ul { list-style: none; padding: 0; }
 
 .showcase__visual {
   position: relative;
-  display: grid;
-  place-items: center;
-  min-height: 380px;
+  min-height: 480px;
 }
-.showcase__device {
-  width: clamp(220px, 30vw, 400px);
-  margin-block: clamp(-3rem, -7vw, -6.5rem);   /* bleeds above/below the section */
-  filter: drop-shadow(0 50px 90px rgba(0,0,0,0.7));
+/* Cluster of varied security equipment (not the face terminal) */
+.showcase__eq {
+  position: absolute;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.55));
+  animation: floaty 7s ease-in-out infinite;
 }
+.showcase__eq--main    { width: clamp(200px, 27vw, 360px); top: 22%;  left: 8%;  z-index: 2; }
+.showcase__eq--dome    { width: clamp(110px, 13vw, 165px); top: 0;    left: 40%; z-index: 3; animation-delay: 1.2s; }
+.showcase__eq--barrier { width: clamp(145px, 17vw, 225px); bottom: 0; left: 2%;  z-index: 1; animation-delay: 2.1s; }
 .showcase__badge {
   position: absolute;
   display: flex;
@@ -1289,9 +1291,9 @@ ul { list-style: none; padding: 0; }
   text-transform: uppercase;
   color: var(--muted);
 }
-.showcase__badge--1 { top: 6%;  left: -6%;  animation-delay: 0s; }
-.showcase__badge--2 { top: 46%; right: -8%; animation-delay: 1.2s; }
-.showcase__badge--3 { bottom: 8%; left: 0%;  animation-delay: 2.4s; }
+.showcase__badge--1 { top: 6%;   right: 2%;  left: auto; animation-delay: 0s; }
+.showcase__badge--2 { top: 46%;  right: -4%; left: auto; animation-delay: 1.2s; }
+.showcase__badge--3 { bottom: 8%; right: 10%; left: auto; animation-delay: 2.4s; }
 @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
 /* ===================== Editorial touches ========================== */
@@ -1318,11 +1320,14 @@ ul { list-style: none; padding: 0; }
 
 @media (max-width: 900px) {
   .showcase__inner { grid-template-columns: 1fr; }
-  .showcase__visual { min-height: 320px; order: -1; }
-  .showcase__device { width: clamp(180px, 54vw, 300px); margin-block: 0; }
+  .showcase__visual { min-height: 340px; order: -1; }
+  .showcase__eq--main    { width: clamp(170px, 52vw, 280px); left: 4%; top: 18%; }
+  .showcase__eq--dome    { width: clamp(90px, 24vw, 140px); left: 46%; }
+  .showcase__eq--barrier { width: clamp(120px, 34vw, 190px); left: 0; }
   .showcase__badge { font-size: 1.15rem; padding: 0.6rem 0.85rem; }
-  .showcase__badge--1 { left: 2%; }
-  .showcase__badge--2 { right: 2%; }
+  .showcase__badge--1 { right: 2%; }
+  .showcase__badge--2 { right: 0; }
+  .showcase__badge--3 { right: 8%; }
   .showcase__orb { right: -30%; }
 }
 @media (max-width: 600px) {

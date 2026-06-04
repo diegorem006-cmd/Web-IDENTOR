@@ -37,6 +37,7 @@
     setupForm();
     setupModal('#privacy-modal', '[data-open-privacy]', '[data-close-privacy]');
     setupModal('#marcas-modal', '[data-open-marcas]', '[data-close-marcas]');
+    setupSectores();
   }
 
   /* ----------------------------- Footer year ----------------------- */
@@ -232,6 +233,71 @@
     $$(closeSel).forEach(function (b) {
       b.addEventListener('click', close);
     });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+    });
+  }
+
+  /* ----------- Sectores: cada tarjeta abre un overlay a medida -------- */
+  function setupSectores() {
+    var modal = $('#sector-modal');
+    if (!modal) return;
+    var titleEl = $('#sector-title');
+    var bodyEl = $('#sector-body');
+    var lastFocus = null;
+
+    var data = [
+      { t: 'Negocios y comercios',
+        p: 'Protege tu mercancía, tu caja y a tu personal. Vigilamos cada rincón del local y te dejamos el control en el celular.',
+        items: ['Cámaras CCTV/IP de alta definición en piso de venta, caja y almacén', 'Control de acceso a bodega y áreas restringidas', 'Monitoreo en vivo 24/7 desde tu celular', 'Respaldo de video ante robos, mermas o reclamos'] },
+      { t: 'Restaurantes',
+        p: 'Cuida tu cocina, tu caja y la experiencia de tus clientes, y resuelve cualquier disputa con evidencia en video.',
+        items: ['Cámaras en cocina, caja, comedor y almacén', 'Control de mermas y supervisión del servicio', 'Redes y WiFi estables para tu punto de venta y tus clientes', 'Monitoreo de varias sucursales desde un solo lugar'] },
+      { t: 'Gimnasios',
+        p: 'Que solo entren tus socios activos y mantén todo bajo control, sin membresías compartidas.',
+        items: ['Control de acceso por reconocimiento facial o huella', 'Torniquetes y registro de entradas', 'Cámaras en salas, recepción y lockers', 'Reportes y monitoreo desde tu celular'] },
+      { t: 'Corporativos y oficinas',
+        p: 'Seguridad y conectividad de nivel empresarial, integradas en una sola infraestructura.',
+        items: ['Control de acceso por áreas, horarios y registro de asistencia', 'CCTV en accesos, pasillos y áreas críticas', 'Cableado estructurado, redes y fibra óptica', 'Videoportería y salas conectadas'] },
+      { t: 'Edificios residenciales',
+        p: 'Tranquilidad para residentes y visitas, desde el lobby hasta el último nivel.',
+        items: ['Videoporteros y control de acceso en lobby', 'Cámaras en accesos, elevadores y estacionamiento', 'Barreras vehiculares automatizadas', 'Caseta de monitoreo y app para residentes'] },
+      { t: 'Condominios',
+        p: 'Controla quién entra y sale, y vigila todas las áreas comunes desde una caseta central.',
+        items: ['Barreras vehiculares con tarjeta o lectura de placas', 'Control de acceso peatonal y videoportería', 'CCTV en áreas comunes y perímetro', 'Caseta de monitoreo central 24/7'] },
+      { t: 'Constructoras',
+        p: 'Protege tu obra del robo de material y herramienta, y supervisa el avance a distancia.',
+        items: ['Vigilancia perimetral en obra, incluso en instalaciones temporales', 'Control de acceso del personal y contratistas', 'Monitoreo del avance en tiempo real desde tu celular', 'Radiocomunicación para coordinar cuadrillas'] },
+      { t: 'Desarrollos inmobiliarios',
+        p: 'Entregamos tu desarrollo con seguridad de punta, planeada desde el diseño.',
+        items: ['Diseño e instalación de toda la infraestructura desde el plano', 'Cableado estructurado y fibra óptica', 'CCTV perimetral, control de acceso y barreras vehiculares', 'Caseta de monitoreo y plataforma centralizada'] }
+    ];
+
+    var esc = function (s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
+    var open = function (i) {
+      var d = data[i];
+      if (!d) return;
+      titleEl.textContent = d.t;
+      bodyEl.innerHTML = '<p>' + esc(d.p) + '</p><ul class="modal__list">' +
+        d.items.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
+      lastFocus = document.activeElement;
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      var c = $('.modal__close', modal);
+      if (c) c.focus();
+    };
+    var close = function () {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    };
+
+    $$('[data-sector]').forEach(function (b) {
+      b.addEventListener('click', function () { open(parseInt(b.getAttribute('data-sector'), 10)); });
+    });
+    $$('[data-close-sector]').forEach(function (b) { b.addEventListener('click', close); });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
     });

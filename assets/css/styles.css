@@ -825,9 +825,11 @@ ul { list-style: none; padding: 0; }
 /* ----------------------------- Sectores ---------------------------- */
 .grid--sectors { grid-template-columns: repeat(4, 1fr); gap: 1rem; }
 .sector {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 100%;
   padding: 1.7rem 1.4rem;
   background: var(--surface);
   border: 1px solid var(--line);
@@ -835,9 +837,24 @@ ul { list-style: none; padding: 0; }
   font-family: var(--font-display);
   font-weight: 500;
   font-size: 1.02rem;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
   transition: transform 0.45s var(--ease), border-color 0.45s var(--ease),
               color 0.45s var(--ease);
 }
+.sector::after {
+  content: "+";
+  position: absolute;
+  top: 1rem; right: 1.3rem;
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.35;
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.sector:hover::after { opacity: 1; transform: rotate(90deg); }
 .sector svg {
   width: 30px; height: 30px;
   color: var(--gold);
@@ -1145,6 +1162,16 @@ ul { list-style: none; padding: 0; }
 .modal__body .btn { margin-top: 0.5rem; }
 .modal__body p.marcas__list { color: var(--text); font-size: 1.06rem; line-height: 1.7; }
 .marcas__list strong { color: var(--gold); font-weight: 700; }
+.modal__list { list-style: none; margin: 0.7rem 0 0.4rem; padding: 0; display: grid; gap: 0.7rem; }
+.modal__list li { position: relative; padding-left: 1.5rem; color: var(--text); font-size: 0.98rem; line-height: 1.5; }
+.modal__list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.5em;
+  width: 7px; height: 7px;
+  border: 1.4px solid var(--gold);
+  transform: rotate(45deg);
+}
 
 /* =========================== Responsive ============================ */
 @media (max-width: 1024px) {

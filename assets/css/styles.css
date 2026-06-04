@@ -752,13 +752,7 @@ ul { list-style: none; padding: 0; }
 .card:hover::before { opacity: 1; }
 .card:hover .card__corner { opacity: 1; width: 20px; height: 20px; }
 
-.card__num {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 1.05rem;
-  color: var(--gold);
-  letter-spacing: 0.06em;
-}
+.card__num { display: none; }   /* números de las tarjetas ocultos a petición */
 .card__icon {
   display: grid;
   place-items: center;

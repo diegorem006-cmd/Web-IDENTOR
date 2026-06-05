@@ -18,6 +18,11 @@
 - Avance actual: Lección 1 (estructura HTML básica) ✅ completada. En curso:
   Lección 2 (títulos h1–h6 y párrafos p).
 
+## Cambios en la web (con fecha)
+- **2026-06-05** — Animaciones premium v1 en `assets/js/main.js`: contadores
+  animados en estadísticas + parallax sutil en showcase/hero. Respetan
+  `prefers-reduced-motion`. No se tocó el CSS. Detalle en `agente/BITACORA.md`.
+
 ## Decisiones de diseño tomadas
 - Se usa **`CLAUDE.md`** (en la raíz) como archivo de instrucciones del agente,
   porque Claude Code lo lee automáticamente al iniciar cada sesión. Se descartó

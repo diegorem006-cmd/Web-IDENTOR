@@ -86,3 +86,39 @@ Respetando la identidad dark/oro y `prefers-reduced-motion`:
 
 > Nota técnica: este análisis se escribió leyendo el `index.html`. Diego subió su
 > pedido como commit "Pedido Prueba"; se atendió el contenido del pedido.
+
+---
+
+## 2026-06-05 — Meta cumplida: animaciones premium (v1)
+
+Diego dijo "EMPIEZA". Con la autonomía de METAS, Sandro tomó la meta de mayor
+impacto visual y cero riesgo (no requiere datos de Diego): **hacer el sitio más
+premium con animaciones elegantes**, respetando la identidad dark/oro.
+
+### Qué se hizo (en `assets/js/main.js`)
+1. **Contadores animados** (`setupCounters`): las estadísticas del hero
+   (`.stat__num`) y los datos grandes (`.hero__bigstats dt`) cuentan hacia arriba
+   con easing suave (easeOutCubic) cuando entran en pantalla. Sólo anima el número
+   inicial y conserva sufijos como "/7", así que "24/7" y "8" funcionan bien.
+2. **Parallax sutil** (`setupParallax`): el orbe del showcase (`.showcase__orb`) y
+   el resplandor del hero (`.hero__glow`) se desplazan suavemente con el scroll
+   para dar profundidad. Sólo usa `transform` (barato) y conserva el
+   `translateY(-50%)` base del orbe para no descentrarlo.
+
+### Decisiones de Sandro
+- **Sólo JS, sin tocar el CSS existente** → cero riesgo de romper el layout.
+- Ambas animaciones **respetan `prefers-reduced-motion`** (se desactivan).
+- Se usó `IntersectionObserver` y `requestAnimationFrame` (rendimiento).
+- Se **descartó** un destello en los botones por ahora: requería tocar el
+  apilado/overflow y no puedo validarlo en vivo; mejor no arriesgar un glitch.
+- JS verificado con `node -c` (sin errores de sintaxis).
+
+### Cómo verlo
+Abrir el sitio y (1) hacer scroll al hero/estadísticas → los números cuentan;
+(2) seguir scrolleando → el orbe y el glow se mueven con profundidad.
+
+### Pendiente / siguiente
+- Validar en vivo y, si gusta, añadir: destello dorado en botones, flotación lenta
+  de los equipos del showcase, subrayado animado extra en el nav.
+- Metas funcionales aún pendientes (alta prioridad): activar formulario
+  (`WEB3FORMS_KEY`) y confirmar redes/dominio reales. (WhatsApp ya tiene número.)

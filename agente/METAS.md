@@ -11,7 +11,8 @@
 
 ## Mis metas
 
-- [ ] (escribe aquí tu meta principal)
+- [x] Que el sitio se sienta más premium con animaciones elegantes.
+      (Meta arrancada por indicación de Diego "EMPIEZA"; Sandro la definió y ejecutó.)
 
 ## Identidad de marca (Sandro NO la cambia nunca)
 - Estilo dark premium: fondo oscuro, tono serio y profesional.
@@ -25,3 +26,7 @@
 
 ## Avance (lo llena Sandro)
 > Sandro marca aquí el progreso de cada meta y lo detalla en BITACORA.md.
+- 2026-06-05 · Meta "más premium con animaciones" → **cumplida (v1)**: contadores
+  animados en las estadísticas + parallax sutil en el showcase y el hero. Detalle
+  en BITACORA.md. Próximas mejoras posibles: destello en botones, flotación de
+  equipos en el showcase (pendiente de validar en vivo).

@@ -33,6 +33,8 @@
     setupReveal();
     setupActiveNav();
     setupCardTilt();
+    setupCounters();
+    setupParallax();
     setupWhatsApp();
     setupForm();
     setupModal('#privacy-modal', '[data-open-privacy]', '[data-close-privacy]');
@@ -129,6 +131,76 @@
       });
       card.addEventListener('pointerleave', function () { card.style.transform = ''; });
     });
+  }
+
+  /* --------------------- Animated number counters ------------------ */
+  /* Cuenta hacia arriba los números de las estadísticas al entrar en
+     pantalla. Sólo anima el número inicial de cada dato (ej. "8", "24/7"),
+     conservando el sufijo. Respeta prefers-reduced-motion. */
+  function setupCounters() {
+    var nums = $$('.stat__num, .hero__bigstats dt');
+    if (!nums.length) return;
+
+    var animate = function (el) {
+      // Primer nodo de texto con dígitos (para no romper <span> internos).
+      var node = null;
+      for (var i = 0; i < el.childNodes.length; i++) {
+        var n = el.childNodes[i];
+        if (n.nodeType === 3 && /\d/.test(n.nodeValue)) { node = n; break; }
+      }
+      if (!node) return;
+      var m = node.nodeValue.match(/^(\D*)(\d+)(.*)$/);
+      if (!m) return;
+      var pre = m[1], target = parseInt(m[2], 10), post = m[3];
+      if (!target) return;
+
+      var dur = 1100, start = null;
+      var step = function (ts) {
+        if (start === null) start = ts;
+        var p = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+        node.nodeValue = pre + Math.round(target * eased) + post;
+        if (p < 1) requestAnimationFrame(step);
+        else node.nodeValue = pre + target + post;
+      };
+      requestAnimationFrame(step);
+    };
+
+    if (reduceMotion || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { animate(en.target); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.6 });
+    nums.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ------------------------- Scroll parallax ----------------------- */
+  /* Desplaza suavemente el orbe del showcase y el resplandor del hero
+     según el scroll, para dar profundidad. Sólo transform (barato). */
+  function setupParallax() {
+    if (reduceMotion) return;
+    var layers = [
+      { el: $('.showcase__orb'), speed: 0.08, base: 'translateY(-50%) ' },
+      { el: $('.hero__glow'),    speed: -0.06, base: '' }
+    ].filter(function (l) { return l.el; });
+    if (!layers.length) return;
+
+    var ticking = false;
+    var update = function () {
+      var y = window.scrollY;
+      layers.forEach(function (l) {
+        var r = l.el.getBoundingClientRect();
+        var mid = r.top + y + r.height / 2;
+        var off = (y + window.innerHeight / 2 - mid) * l.speed;
+        l.el.style.transform = l.base + 'translate3d(0,' + off.toFixed(1) + 'px,0)';
+      });
+      ticking = false;
+    };
+    window.addEventListener('scroll', function () {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    update();
   }
 
   /* --------------------------- WhatsApp FAB ------------------------ */

@@ -34,25 +34,25 @@ Mejorar y mantener la página web de IDENTOR de forma continua.
 - `assets/js/hero-sequence.js` — secuencia del hero.
 - `assets/img/` — imágenes SVG.
 
-## Modo de trabajo: AGENTE AUTÓNOMO (como un empleado)
-Diego dirige; Sandro ejecuta y decide el "cómo". El control se lleva por la
-carpeta `agente/`:
-- `agente/METAS.md` — visión y objetivos del sitio + nivel de autonomía. Lo
-  escribe Diego. Sandro lo respeta siempre.
-- `agente/PEDIDOS.md` — buzón donde Diego pide cosas en lenguaje normal (sin
-  código). Sandro decide cómo hacerlas y las ejecuta.
-- `agente/BITACORA.md` — Sandro registra aquí qué hizo, por qué y qué decidió.
+## Modo de trabajo: AGENTE POR METAS (máxima autonomía)
+Diego ya NO escribe tareas concretas. Diego escribe **metas** y Sandro decide
+TODO el cómo (qué tareas hacer, en qué orden) y las ejecuta hasta cumplir la meta.
+El control se lleva por la carpeta `agente/`:
+- `agente/METAS.md` — **el centro.** Aquí Diego escribe sus metas en lenguaje
+  normal. Es lo único que Diego necesita escribir.
+- `agente/BITACORA.md` — Sandro registra qué hizo, por qué, qué decidió y qué
+  falta para cumplir cada meta.
+- `agente/PEDIDOS.md` — opcional / legado. Solo si Diego quiere pedir algo muy
+  puntual. Normalmente se trabaja desde METAS.
 
 ## Flujo de trabajo en cada sesión
-1. **Al iniciar:** lee `memory.md`, `agente/METAS.md` y `agente/PEDIDOS.md`
-   antes de hacer cualquier cosa.
-2. **Ejecuta los pedidos** de `PEDIDOS.md` que estén pendientes ([ ]):
-   - Decide tú mismo el mejor cómo, respetando METAS e identidad de marca.
-   - Si un pedido es ambiguo o irreversible (ver "autonomía" en METAS), pregunta
-     antes de actuar.
-   - Al terminar cada pedido, márcalo [x] y muévelo a "Hechos" en PEDIDOS.md.
-3. **Al terminar:** registra en `agente/BITACORA.md` y en `memory.md` los
-   cambios (con fecha), decisiones de diseño y pendientes. Haz commit y push.
+1. **Al iniciar:** lee `memory.md`, `agente/METAS.md` y `agente/BITACORA.md`.
+2. **Toma cada meta** de METAS.md y conviértela tú mismo en un plan de acción:
+   - Descompón la meta en pasos concretos (Sandro decide cuáles).
+   - Ejecútalos respetando la identidad de marca y el nivel de autonomía de METAS.
+   - Si algo es ambiguo o irreversible, pregunta antes; lo demás, decídelo solo.
+3. **Al terminar:** registra en `agente/BITACORA.md` qué hiciste y el avance de
+   cada meta; actualiza `memory.md`. Haz commit y push.
 
 ## Git
 - Rama de trabajo: `claude/kind-hypatia-EcfCl`.

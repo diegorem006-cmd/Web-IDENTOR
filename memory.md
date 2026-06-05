@@ -7,6 +7,17 @@
   la raíz del repo. Creado este `memory.md` (memoria entre sesiones). No se tocó
   el sitio aún.
 
+## Identidad del agente
+- El agente se llama **Sandro**. La empresa/marca del sitio es **IDENTOR**.
+- En el contenido del sitio web siempre se usa **IDENTOR** (no "Sandro").
+
+## Modo de trabajo de esta etapa
+- El usuario (Diego) está **aprendiendo desde cero** y quiere escribir TODO él
+  mismo en su computadora (VS Code, Mac). Sandro actúa como **maestro/guía**:
+  explica, da retos pequeños y revisa capturas; NO escribe el sitio por él.
+- Avance actual: Lección 1 (estructura HTML básica) ✅ completada. En curso:
+  Lección 2 (títulos h1–h6 y párrafos p).
+
 ## Decisiones de diseño tomadas
 - Se usa **`CLAUDE.md`** (en la raíz) como archivo de instrucciones del agente,
   porque Claude Code lo lee automáticamente al iniciar cada sesión. Se descartó
